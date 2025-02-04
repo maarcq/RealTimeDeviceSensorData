@@ -52,23 +52,29 @@ struct ContentView: View {
     @StateObject private var motionManager = MotionManager()
     
     var body: some View {
-        VStack {
-            Text("Accelerometer Data")
-                .font(.title)
-            
-            if let data = motionManager.accelerometerData {
-                Text("x: \(data.acceleration.x, specifier: "%.2f")")
-                Text("y: \(data.acceleration.y, specifier: "%.2f")")
-                Text("z: \(data.acceleration.z, specifier: "%.2f")")
+        VStack(spacing: 24) {
+            VStack {
+                Text("Accelerometer Data")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                if let data = motionManager.accelerometerData {
+                    Text("x: \(data.acceleration.x, specifier: "%.2f")")
+                    Text("y: \(data.acceleration.y, specifier: "%.2f")")
+                    Text("z: \(data.acceleration.z, specifier: "%.2f")")
+                }
             }
             
-            Text("Gyroscope Data")
-                .font(.title)
-            
-            if let data = motionManager.gyrScopeData {
-                Text("x: \(data.rotationRate.x, specifier: "%.2f")")
-                Text("y: \(data.rotationRate.y, specifier: "%.2f")")
-                Text("z: \(data.rotationRate.z, specifier: "%.2f")")
+            VStack {
+                Text("Gyroscope Data")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                if let data = motionManager.gyrScopeData {
+                    Text("x: \(data.rotationRate.x, specifier: "%.2f")")
+                    Text("y: \(data.rotationRate.y, specifier: "%.2f")")
+                    Text("z: \(data.rotationRate.z, specifier: "%.2f")")
+                }
             }
         }
         .padding()
